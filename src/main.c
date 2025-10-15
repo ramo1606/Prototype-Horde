@@ -1,6 +1,4 @@
-#include "raylib.h"
-#include "game.h"
-#include "config.h"
+#include "common.h"
 
 int main(void)
 {
@@ -8,18 +6,19 @@ int main(void)
     InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "RG35XX Square Demo");
     SetTargetFPS(60);
     
-    // Initialize game state
-    GameState game;
-    InitGame(&game);
-    
     // Main game loop
-    while (!ShouldGameExit())
+    while (!WindowShouldClose())
     {
-        // Update game logic
-        UpdateGame(&game);
+        // Update game state
+        // (Your game logic here)
         
-        // Draw everything
-        DrawGame(&game);
+        // Draw
+        BeginDrawing();
+        ClearBackground(RAYWHITE);
+        
+        // (Your drawing code here)
+        
+        EndDrawing();
     }
     
     // Clean up

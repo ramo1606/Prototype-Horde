@@ -1,19 +1,32 @@
 cmake_minimum_required(VERSION 3.15)
-project(RG35XX_Game C)
+project(Prototype-Horde C)
 
 # Set C99 standard
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 # Define source and header files
-set(SOURCES
-    src/main.c
-    src/game.c
+file(GLOB SOURCES
+    src/*.c
+    #src/core/*.c
+    #src/game/*.c
+    #src/renderer/*.c
+    #src/systems/*.c
+    #src/tools/*.c
 )
 
-set(HEADERS
-    include/config.h
-    include/game.h
+file(GLOB HEADERS
+    include/*.h
+    #include/core/*.h
+    include/core/rini/*.h
+    include/core/rmem/*.h
+    include/core/rres/*.h
+    include/core/rres/externals/*.h
+    #include/game/*.h
+    include/raygui/*.h
+    #include/renderer/*.h
+    #include/systems/*.h
+    #include/tools/*.h
 )
 
 # Options for build configuration
@@ -96,7 +109,7 @@ if(BUILD_FOR_RG35XX)
     target_link_libraries(${PROJECT_NAME} 
         raylib
         ${EGL_LIBRARY}
-        ${GLES2_LIBRARY}
+        ${GLES3_LIBRARY}
         m
         pthread
         dl
